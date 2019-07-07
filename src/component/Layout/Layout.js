@@ -22,13 +22,19 @@ class layout extends Component {
     SideDrawerClosedHandler = () => {
         this.setState({showSideDrawer: false })
     }
+
+    SideDrawerToggleHandler = () => {
+        this.setState((prevState) => {
+            return {showSideDrawer: !prevState.showSideDrawer}
+        });
+    }
     render() { 
         return ( 
                 <Aux>
                     <SideDrawer 
                     open={this.state.showSideDrawer}
                     closed={this.SideDrawerClosedHandler}/>
-                    <Toolbar/>
+                    <Toolbar drawertoggleclicked={this.SideDrawerToggleHandler}/>
                     <main className = { classes.Content } >
                         {this.props.children}
                     </main>
